@@ -1,6 +1,3 @@
-
-
-
 class Product:
     name: str
     description: str
@@ -8,14 +5,12 @@ class Product:
     quantity: int
     product_list = []
 
-
     def __init__(self, name, description, price, quantity):
         """Конструктор класса Product, для создания нового экземпляра"""
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
-
 
     @classmethod
     def new_product(cls, new_product):
@@ -25,12 +20,7 @@ class Product:
                 product.quantity += new_product["quantity"]
                 product.price = max(product.price, new_product["price"])
                 return product
-        new_item = cls(
-            new_product["name"],
-            new_product["description"],
-            new_product["price"],
-            new_product["quantity"]
-        )
+        new_item = cls(new_product["name"], new_product["description"], new_product["price"], new_product["quantity"])
         cls.product_list.append(new_item)
         return new_item
 
@@ -56,8 +46,6 @@ class Product:
         else:
             self.__price = new_price
             print(f"Цена {new_price}")
-
-
 
 
 # new_product = Product.new_product(
