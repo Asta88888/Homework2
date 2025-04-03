@@ -3,15 +3,19 @@ from src.category import Category
 
 
 class ProductsIterator:
+    """Класс-итератор для перебора товаров в категории."""
     def __init__(self, category_obj):
+        """Конструктор итератора"""
         self.category = category_obj
         self.index = 0
 
     def __iter__(self):
+        """Возвращает итератор."""
         self.index = 0
         return self
 
     def __next__(self):
+        """Возвращает следующий продукт в категории."""
         if self.index < len(self.category.products_list):
             product = self.category.products_list[self.index]
             self.index += 1
