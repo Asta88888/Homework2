@@ -2,6 +2,7 @@ from src.product import Product
 
 
 class Category:
+    """Класс, представляющий категорию товаров."""
     name: str
     description: str
     products: list
@@ -16,6 +17,10 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
 
+    def __str__(self):
+        """Возвращает строковое представление категории с общим количеством товаров."""
+        return f"{self.name}, количество продуктов: {len(self.products)} шт."
+
     def add_product(self, product):
         """Функция добавляет новый продукт в список продуктов"""
         self.__products.append(product)
@@ -25,11 +30,12 @@ class Category:
     def products(self):
         """Геттер для вывода списка продуктов в виде строки"""
         return "\n".join(
-            f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт." for product in self.__products
+            f"{str(product)}" for product in self.__products
         )
 
     @property
     def products_list(self):
+        """Возвращает список объектов продуктов в категории."""
         return self.__products
 
 
@@ -49,4 +55,11 @@ class Category:
 #     [product4],
 # )
 # print(category1.products)
+# print(category2.products)
+#
+# print(str(product1))
+# print(str(product2))
+# print(str(product3))
+# print(str(category2))
+#
 # print(category2.products)

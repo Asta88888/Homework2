@@ -1,4 +1,5 @@
 class Product:
+    """Класс, представляющий продукт с ценой, описанием и количеством на складе."""
     name: str
     description: str
     price: float
@@ -11,6 +12,14 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+
+    def __str__(self):
+        """Возвращает строковое представление продукта."""
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other):
+        """Позволяет складывать стоимость всех товаров на складе."""
+        return self.price * self.quantity + other.price * other.quantity
 
     @classmethod
     def new_product(cls, new_product):
