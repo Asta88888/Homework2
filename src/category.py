@@ -1,3 +1,5 @@
+from openpyxl.styles.builtins import total
+
 from src.product import Product
 
 
@@ -19,7 +21,8 @@ class Category:
 
     def __str__(self):
         """Возвращает строковое представление категории с общим количеством товаров."""
-        return f"{self.name}, количество продуктов: {len(self.products)} шт."
+        total_products_count = sum([p.quantity for p in self.__products])
+        return f"{self.name}, количество продуктов: {total_products_count} шт."
 
     def add_product(self, product):
         """Функция добавляет новый продукт в список продуктов"""
