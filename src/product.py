@@ -6,6 +6,7 @@ class Product:
     quantity: int
     product_list = []
 
+
     def __init__(self, name, description, price, quantity):
         """Конструктор класса Product, для создания нового экземпляра"""
         self.name = name
@@ -13,13 +14,19 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+
     def __str__(self):
         """Возвращает строковое представление продукта."""
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
 
+
     def __add__(self, other):
         """Позволяет складывать стоимость всех товаров на складе."""
-        return self.price * self.quantity + other.price * other.quantity
+        if isinstance(other, Product):
+            return self.price * self.quantity + other.price * other.quantity
+        else:
+            raise TypeError
+
 
     @classmethod
     def new_product(cls, new_product):
@@ -33,10 +40,12 @@ class Product:
         cls.product_list.append(new_item)
         return new_item
 
+
     @property
     def price(self):
         """Геттер для цены"""
         return self.__price
+
 
     @price.setter
     def price(self, new_price):

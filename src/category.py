@@ -1,5 +1,3 @@
-from openpyxl.styles.builtins import total
-
 from src.product import Product
 
 
@@ -11,6 +9,7 @@ class Category:
     category_count = 0
     product_count = 0
 
+
     def __init__(self, name, description, products):
         """Конструктор класса Category, для создания экземпляров класса"""
         self.name = name
@@ -19,15 +18,21 @@ class Category:
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
 
+
     def __str__(self):
         """Возвращает строковое представление категории с общим количеством товаров."""
         total_products_count = sum([p.quantity for p in self.__products])
         return f"{self.name}, количество продуктов: {total_products_count} шт."
 
+
     def add_product(self, product):
         """Функция добавляет новый продукт в список продуктов"""
-        self.__products.append(product)
-        Category.product_count += 1
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category.product_count += 1
+        else:
+            raise TypeError
+
 
     @property
     def products(self):
@@ -35,6 +40,7 @@ class Category:
         return "\n".join(
             f"{str(product)}" for product in self.__products
         )
+
 
     @property
     def products_list(self):
