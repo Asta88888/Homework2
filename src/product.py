@@ -19,6 +19,7 @@ class Product(BaseProduct, PrintMixin):
         self.quantity = quantity
         super().__init__()
 
+
     def __str__(self):
         """Возвращает строковое представление продукта."""
         return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
