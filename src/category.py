@@ -1,7 +1,8 @@
 from src.product import Product
+from src.base_category_order import BaseEntity
 
 
-class Category:
+class Category(BaseEntity):
     """Класс, представляющий категорию товаров."""
     name: str
     description: str
@@ -12,8 +13,7 @@ class Category:
 
     def __init__(self, name, description, products):
         """Конструктор класса Category, для создания экземпляров класса"""
-        self.name = name
-        self.description = description
+        super().__init__(name, description)
         self.__products = products if products else []
         Category.category_count += 1
         Category.product_count += len(products) if products else 0
@@ -46,6 +46,10 @@ class Category:
     def products_list(self):
         """Возвращает список объектов продуктов в категории."""
         return self.__products
+
+
+    def get_info(self):
+        return f"Категория: {self.name} — {self.description}"
 
 
 # product1 = Product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
