@@ -67,3 +67,23 @@ def lawn_grass1():
 @pytest.fixture
 def lawn_grass2():
     return LawnGrass("Газонная трава 2", "Выносливая трава", 450.0, 15, "США", "5 дней", "Темно-зеленый")
+
+
+# @pytest.fixture
+# def empty_quantity():
+#     return Category(
+#         name="Холодильники",
+#         description="Холодильники, как холодильники, используются для хранения продуктов",
+#         products=[
+#             Product("Haier CEF535AWG", "Тип компрессора стандартный", 59990.0, 0),
+#             Product("Indesit DS 316 W", "Тип компрессора инверторный", 49990.0, 0)
+#         ]
+#     )
+
+#
+# @pytest.fixture
+# def empty_products_list():
+#     return Category(
+#         name="Холодильники",
+#         description="Холодильники, как холодильники, используются для хранения продуктов"
+#     )

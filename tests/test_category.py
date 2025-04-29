@@ -1,4 +1,6 @@
 import pytest
+from src.category import Category
+from src.product import Product
 
 
 def test_category_init(first_category, second_category):
@@ -20,6 +22,16 @@ def test_first_category_str(first_category):
 def test_second_category_str(second_category):
     assert str(second_category) == "Телевизоры, количество продуктов: 7 шт."
 
+def test_empty_quantity():
+    with pytest.raises(ValueError, match="Товар с нулевым количеством не может быть добавлен"):
+        Category(
+            name="Холодильники",
+            description="Холодильники, как холодильники...",
+            products=[
+                Product("Haier CEF535AWG", "Тип компрессора стандартный", 59990.0, 0),
+                Product("Indesit DS 316 W", "Тип компрессора инверторный", 49990.0, 0)
+            ]
+        )
 # def test_category_add_products(first_category, product):
 #     assert len(first_category.products_list) == 2
 #     first_category.products = product

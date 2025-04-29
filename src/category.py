@@ -48,6 +48,15 @@ class Category(BaseEntity):
         return self.__products
 
 
+    def middle_price(self):
+        """Вычисляет среднюю цену всех товаров. Возвращает 0, если товаров нет"""
+        try:
+            common_price = sum(product.price for product in self.__products)
+            common_quantity = len(self.__products)
+            return common_price / common_quantity
+        except ZeroDivisionError:
+            return 0
+
     def get_info(self):
         return f"Категория: {self.name} — {self.description}"
 

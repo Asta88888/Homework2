@@ -13,6 +13,8 @@ class Product(BaseProduct, PrintMixin):
 
     def __init__(self, name, description, price, quantity):
         """Конструктор класса Product, для создания нового экземпляра"""
+        if quantity == 0:
+            raise ValueError("Товар с нулевым количеством не может быть добавлен")
         self.name = name
         self.description = description
         self.__price = price
@@ -78,7 +80,7 @@ if __name__ == "__main__":
     print(product.description)
     print(product.price)
     print(product.quantity)
-    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 0)
     print(product2.name)
     print(product2.description)
     print(product2.price)
